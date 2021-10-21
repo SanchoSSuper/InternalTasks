@@ -1,0 +1,13 @@
+<?php /** @var $block \Magento\Framework\View\Element\Template */ ?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'Magento_LazyLoad/js/lazy_load'
+    ], function ($) {
+        $('img.lazy_load').lazyLoadingImage({
+            effect: 'fadeIn',
+            effectspeed: 1000,
+            imageloader: '<?= /* @escapeNotVerified */ $block->getViewFileUrl('Magento_LazyLoad::images/Loading.gif') ?>'
+        });
+    });
+</script>

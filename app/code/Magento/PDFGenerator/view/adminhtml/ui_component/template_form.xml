@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">template_form.template_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Template Details</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <namespace>template_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>template_form.template_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="back" class="Magento\PDFGenerator\Block\Adminhtml\Template\Edit\BackButton"/>
+            <button name="delete" class="Magento\PDFGenerator\Block\Adminhtml\Template\Edit\DeleteButton"/>
+            <button name="reset" class="Magento\PDFGenerator\Block\Adminhtml\Template\Edit\ResetButton"/>
+            <button name="save" class="Magento\PDFGenerator\Block\Adminhtml\Template\Edit\SaveButton"/>
+        </buttons>
+    </settings>
+
+    <dataSource name="template_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+                <item name="submit_url" xsi:type="url" path="generator/template/save" />
+            </item>
+        </argument>
+        <dataProvider class="Magento\PDFGenerator\Model\Template\DataProvider" name="template_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>template_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="template_details">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">false</item>
+                <item name="label" xsi:type="string" translate="true">Template Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="is_enabled" formElement="checkbox">
+            <settings>
+                <label translate="true">Is Enabled</label>
+                <tooltip>
+                    <description translate="true">Is PDF Template Enabled</description>
+                </tooltip>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <prefer>toggle</prefer>
+                        <valueMap>
+                            <map name="false" xsi:type="string">0</map>
+                            <map name="true" xsi:type="string">1</map>
+                        </valueMap>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="header">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Model\ResourceModel\Block\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Header</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">template</item>
+                    <item name="dataScope" xsi:type="string">header</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="footer">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Magento\Cms\Model\ResourceModel\Block\Collection</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Footer</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">template</item>
+                    <item name="dataScope" xsi:type="string">footer</item>
+                    <item name="default" xsi:type="string">0</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                </item>
+            </argument>
+        </field>
+        <field name="body">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Body</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                    <item name="source" xsi:type="string">template</item>
+                    <item name="dataScope" xsi:type="string">body</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

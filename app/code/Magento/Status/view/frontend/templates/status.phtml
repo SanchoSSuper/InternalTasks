@@ -1,0 +1,28 @@
+<?php
+/**
+ * @var Status $block
+ */
+
+use Magento\Status\Block\Customer\Status;
+
+?>
+<form action="<?= $block->getURL("status/customer/save")?>">
+    <div>
+        <span>Set Status</span>
+    </div>
+    <div>
+        <select name='status_type' class='form-control'>
+            <?php foreach ($block->getOptions() as $key => $option):
+                if ((!$block->isExists() && array_key_first($block->getOptions()) == $key) || $block->isExists() == $key): ?>
+                    <option selected="selected" value="<?= $option['value'] ?>"><?= $option['label'] ?></option>
+                <?php else: ?>
+                    <option value="<?= $option['value'] ?>"><?= $option['label'] ?></option>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+

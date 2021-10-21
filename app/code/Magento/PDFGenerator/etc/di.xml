@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <virtualType name="Magento\PDFGenerator\Model\ResourceModel\Template\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">pdf_templates</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\PDFGenerator\Model\ResourceModel\Template</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="pdf_templates_listing_data_source" xsi:type="string">
+                    Magento\PDFGenerator\Model\ResourceModel\Template\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <preference for="Magento\PDFGenerator\Api\Data\TemplateInterface" type="Magento\PDFGenerator\Model\Template"/>
+    <preference for="Magento\PDFGenerator\Api\Data\TemplateSearchResultInterface"
+                type="Magento\PDFGenerator\Model\TemplateSearchResult"/>
+    <preference for="Magento\PDFGenerator\Api\TemplateRepositoryInterface"
+                type="Magento\PDFGenerator\Model\TemplateRepository"/>
+</config>

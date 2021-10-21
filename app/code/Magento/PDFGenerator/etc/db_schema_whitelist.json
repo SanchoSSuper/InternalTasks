@@ -1,0 +1,12 @@
+{
+    "pdf_templates": {
+        "column": {
+            "template_id": true,
+            "is_enabled": true,
+            "header": true,
+            "footer": true,
+            "body": true,
+            "created_at": true
+        }
+    }
+}
